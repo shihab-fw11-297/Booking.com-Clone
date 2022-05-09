@@ -1,9 +1,12 @@
-
+import "./list.css";
+import Navbar from '../../components/navbar/Navbar'
+import Header from '../../components/header/Header'
 
 const List = () => {
     return (
         <div>
-            <h1 className="homeTitle">List</h1>
+            <Navbar />
+            <Header />
         </div>
     );
 };
