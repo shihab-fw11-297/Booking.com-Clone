@@ -1,11 +1,12 @@
 .navbar{
-    height: 50px;
+    height: 60px;
     background-color: #003580;
     display: flex;
     justify-content: center;
   }
 
   .navContainer{
+    padding-top: 20px;
     width: 100%;
     max-width: 1024px;
     color: white;
@@ -24,7 +25,19 @@
     margin-left: 20px;
     font-weight: 600;
     border: none;
-    padding: 5px 10px;
+    font-size: 15px;
+    padding: 5px 20px;
     cursor: pointer;
     color: #2168ca;
+  }
+
+  .firstButton{
+    margin-left: 20px;
+    font-weight: 600;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+    background-color: #003580 ;
+    border: 1px solid white;
   }
