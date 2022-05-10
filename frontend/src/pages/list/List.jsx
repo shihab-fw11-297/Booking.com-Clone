@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
+import SearchItem from "../../components/searchItem/SearchItem";
+
 
 const List = () => {
   const location = useLocation();
@@ -12,6 +14,8 @@ const List = () => {
   const [date, setDate] = useState(location.state.date);
   const [openDate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
+
+  console.log(date);
 
   return (
     <div>
@@ -86,7 +90,13 @@ const List = () => {
             <button>Search</button>
           </div>
           <div className="listResult">
-          
+                <SearchItem destination={destination} date={date} options={options}/>
+                <SearchItem destination={destination} date={date} options={options}/>
+                <SearchItem destination={destination} date={date} options={options}/>
+                <SearchItem destination={destination} date={date} options={options}/>
+                <SearchItem destination={destination} date={date} options={options}/>
+                <SearchItem destination={destination} date={date} options={options}/>
+                <SearchItem destination={destination} date={date} options={options}/>
           </div>
         </div>
       </div>
