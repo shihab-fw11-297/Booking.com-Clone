@@ -12,7 +12,7 @@ Booking.com has grown from a small Dutch start-up to one of the world’s leadin
 Booking.com requires [Node.js](https://nodejs.org/) to run.
 
 Download the project.
-[Download Here](https://github.com/Ramlala-Yadav-Git/Booking.com-clone/archive/refs/heads/main.zip)
+[Download Here](link)
 
 
 Clone the project from Command prompt or Bash.
@@ -33,7 +33,7 @@ npm start
 
 # Tech Stack
 
-React, Javascript, CSS, React-router-dom, Axios, Styled-components, Json-server, JSX, CSS
+React, Javascript, CSS, React-router-dom, Axios,fontawesome,Express, NodeJS MongoDB, Jsonwebtoken
 
 # Technologies Used
 
