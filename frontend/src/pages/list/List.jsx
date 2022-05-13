@@ -17,9 +17,13 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  const [rating, setRating] = useState(0);
 
-  const { data, loading } = useFetch(`http://localhost:8800/api/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`);
+  const { data, loading,reFetch  } = useFetch(`http://localhost:8800/api/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}&rating=${rating || 5}`);
 
+  const handleClick = () => {
+    reFetch();
+  };
 
   return (
     <div>
@@ -54,13 +58,27 @@ const List = () => {
                   <span className="lsOptionText">
                     Min price <small>per night</small>
                   </span>
-                  <input type="number" className="lsOptionInput" />
+                  <input type="number" className="lsOptionInput" onChange={(e) => setMin(e.target.value)} />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Max price <small>per night</small>
                   </span>
-                  <input type="number" className="lsOptionInput" />
+                  <input type="number" className="lsOptionInput" onChange={(e) => setMax(e.target.value)} />
+                </div>
+
+                <div className="lsOptionItem">
+                  <span className="lsOptionText">
+                  Star rating
+                  </span>
+                  <select className="selectboxs" onChange={(e) => setRating(e.target.value)}>
+                    <option selected>Select Star</option>
+                    <option value="1">1 star</option>
+                    <option value="2">2 star</option>
+                    <option value="3">3 star</option>
+                    <option value="4">4 star</option>
+                    <option value="5">5 star</option>
+                  </select>
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Adult</span>
@@ -91,7 +109,7 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button>Search</button>
+             <button onClick={handleClick}>Search</button>
           </div>
           <div className="listResult">
                  {loading ? (
