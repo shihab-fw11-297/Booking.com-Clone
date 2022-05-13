@@ -16,8 +16,8 @@ const Navbar = () => {
                 </span>
                 <div className="navItems">
                     <button className="firstButton">List Your Property</button>
-                    <button className="navButton">Register</button>
-                    <button className="navButton">Login</button>
+                    <button className="navButton"><Link to="/Signup">Register</Link></button>
+                    <button className="navButton"><Link to="/login">Login</Link></button>
                 </div>
             </div>
         </div>

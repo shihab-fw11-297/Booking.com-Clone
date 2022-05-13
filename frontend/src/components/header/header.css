@@ -48,6 +48,11 @@
     cursor: pointer;
   }
 
+  .headerBtn:hover{
+    background-color: #504646;
+    color: white;
+  }
+
   .headerSearch {
     height: 30px;
     background-color: white;

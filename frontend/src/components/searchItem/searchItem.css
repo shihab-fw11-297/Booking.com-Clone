@@ -25,6 +25,10 @@
     font-size: 20px;
     color: #0071c2;
   }
+
+  .siTitle:hover{
+    cursor: pointer;
+  }
   
   .siDistance {
     font-size: 12px;
