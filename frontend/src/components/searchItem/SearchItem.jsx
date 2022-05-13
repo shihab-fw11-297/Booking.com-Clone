@@ -1,29 +1,24 @@
+import { Link } from "react-router-dom";
 import "./searchItem.css";
-import { useNavigate } from "react-router-dom";
 
-const SearchItem = ({destination,date,options}) => {
-    const navigate = useNavigate();
-
-    const handleSearch = () => {
-        navigate("/hotels/:id", { state: { destination, date, options } });
-      };
+const SearchItem = ({ item }) => {
 
     return (
         <div className="searchItem">
             <img
-                src="https://t-cf.bstatic.com/xdata/images/hotel/square200/39194987.webp?k=797ae9038baac981eac4d2deb95e8bc5abcf15097dc3fbd4ef9fd540425f6e4b&o=&s=1"
+                src={item.photos[0]}
                 alt=""
                 className="siImg"
             />
             <div className="siDesc">
-                <h1 className="siTitle" onClick={() => {handleSearch();}}>Tower Street Apartments</h1>
-                <span className="siDistance">500m from center</span>
+                <h1 className="siTitle">{item.name}</h1>
+                <span className="siDistance">{item.distance}m from center</span>
                 <span className="siTaxiOp">Free airport taxi</span>
                 <span className="siSubtitle">
                     Studio Apartment with Air conditioning
                 </span>
                 <span className="siFeatures">
-                    Entire studio • 1 bathroom • 21m² 1 full bed
+                    {item.desc}
                 </span>
                 <span className="siCancelOp">Free cancellation </span>
                 <span className="siCancelOpSubtitle">
@@ -31,14 +26,17 @@ const SearchItem = ({destination,date,options}) => {
                 </span>
             </div>
             <div className="siDetails">
-                <div className="siRating">
+                {item.rating && <div className="siRating">
                     <span>Excellent</span>
-                    <button>8.9</button>
-                </div>
+                    <button>{item.rating}</button>
+                </div>}
+
                 <div className="siDetailTexts">
-                    <span className="siPrice">$112</span>
+                    <span className="siPrice">${item.cheapestPrice}</span>
                     <span className="siTaxOp">Includes taxes and fees</span>
-                    <button className="siCheckButton">See availability</button>
+                    <Link to={`/hotels/${item._id}`}>
+                        <button className="siCheckButton">See availability</button>
+                    </Link>
                 </div>
             </div>
         </div>
