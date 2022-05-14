@@ -1,25 +1,61 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./Login.module.css";
 import GoogleLogin from "react-google-login";
 import { GoogleLogout } from "react-google-login";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate()
+
+    const [credentials, setCredentials] = useState({
+        email: undefined,
+        password: undefined,
+      });
+
+    const { loading, error, dispatch } = useContext(AuthContext);
+
     const [showPassword, setShowPassword] = useState(false);
+
     const handleChange = (e) => {
         let str = e.target.value;
+
         if (str.includes("@") && str.includes(".")) {
             setShowPassword(true);
-        } else {
-            setShowPassword(false);
         }
+        setCredentials((prev) => ({ ...prev, [e.target.id]: str }));
     };
 
 
+    
     const responseGoogle = (res) => {
-     
+        res.preventDefault();
+        dispatch({ type: "LOGIN_START" });
+        try {
+            dispatch({ type: 'AUTH', payload:  res.data });
+            dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+            navigate("/")
+        } catch (err) {
+            dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+        }
+
     };
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        dispatch({ type: "LOGIN_START" });
+
+        try {
+            const res = await axios.post("http://localhost:8800/api/auth/login", credentials);
+            dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+             navigate("/")
+          } catch (err) {
+            dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+          }
+
+    }
 
 
     return (
@@ -73,16 +109,20 @@ const Login = () => {
                             <input
                                 className={styles.input}
                                 type="password"
-                                name="password1"
-                                id="password1"
+                                name="password"
+                                id="password"
+                                placeholder="password"
+                                onChange={handleChange}
                             />
                         </div>
-                    ) : null}
+                    ) : ""}
                     <input
                         className={styles.button}
                         type="submit"
                         defaultValue="Create account"
+                        disabled={loading} onClick={handleClick}
                     />
+                     {error && <span>{error.message}</span>}
                 </form>
             </div>
 
@@ -100,7 +140,7 @@ const Login = () => {
                     />
                 </button>
                 <GoogleLogin
-                    clientId=""
+                    clientId="226966314469-tqionojppbn060982fbumool9qd98qsd.apps.googleusercontent.com"
                     render={(renderProps) => (
                         <button
                             className={styles.google}
@@ -157,7 +197,7 @@ export const Logout = () => {
     return <div>
         <GoogleLogout
             className={styles.logout}
-            clientId=""
+            clientId="226966314469-tqionojppbn060982fbumool9qd98qsd.apps.googleusercontent.com"
             buttonText=""
             onLogoutSuccess={logoutres}
         >

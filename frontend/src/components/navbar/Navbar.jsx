@@ -5,8 +5,11 @@ import {
     faCircleUser,
     faBars
 } from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
     return (
         <div className="navbar">
             <div className="navContainer">
@@ -18,13 +21,16 @@ const Navbar = () => {
                         </svg>
                     </Link>
                 </span>
-                <div className="navItems">
-                    <button className="firstButton">List Your Property</button>
-                    <button className="navButton"><Link to="/Signup">Register</Link></button>
-                    <button className="navButton"><Link to="/login">Login</Link></button>
-                    <button  className="navButtons" ><FontAwesomeIcon  icon={faCircleUser} className="headerIcons2" /></button>
-                    <button  className="navButtons" ><Link to="/">  <FontAwesomeIcon icon={faBars} className="headerIcons2" /> </Link></button>
-                </div>
+                {user ? <b>Welcome {user.username}</b> : (
+
+                    <div className="navItems">
+                        <button className="firstButton">List Your Property</button>
+                        <button className="navButton"><Link to="/Signup">Register</Link></button>
+                        <button className="navButton"><Link to="/login">Login</Link></button>
+                        <button className="navButtons" ><FontAwesomeIcon icon={faCircleUser} className="headerIcons2" /></button>
+                        <button className="navButtons" ><Link to="/">  <FontAwesomeIcon icon={faBars} className="headerIcons2" /> </Link></button>
+                    </div>
+                )}
             </div>
         </div>
     )
