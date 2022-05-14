@@ -26,9 +26,10 @@ const Header = ({ type }) => {
       startDate: new Date(),
       endDate: new Date(),
       key: "selection",
-    },
+    }
+    ,
   ]);
-
+  
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
@@ -120,6 +121,7 @@ const Header = ({ type }) => {
                     ranges={date}
                     className="date"
                     minDate={new Date()}
+                  
                   />
                 )}
               </div>

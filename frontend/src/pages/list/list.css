@@ -84,3 +84,16 @@
 .listResult {
   flex: 3;
 }
+
+@media screen and (max-width: 767px) {
+ 
+  .listWrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  .listSearch {
+    position: static;
+  }
+  
+}

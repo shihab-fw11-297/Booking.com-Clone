@@ -113,3 +113,15 @@
     cursor: pointer;
     border-radius: 5px;
   }
+
+  @media screen and (max-width: 767px) {
+ 
+    .siImg {
+      width: 150px;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+   
+
+  }

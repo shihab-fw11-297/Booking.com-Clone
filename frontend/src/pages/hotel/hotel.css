@@ -150,3 +150,14 @@
   color: lightgray;
   cursor: pointer;
 }
+
+@media screen and (max-width: 767px) {
+  .hotelContainer{
+    padding: 10px;
+  }
+  .hotelDetails{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
