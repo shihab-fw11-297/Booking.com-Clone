@@ -21,3 +21,21 @@
     color: #003580;
     cursor: pointer;
   }
+  .footerImg{
+    padding: 19px;
+    margin: auto;
+    width: 55%;
+    text-align: center; 
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  @media screen and (max-width: 767px) {
+    .fLists{
+      display: none;
+    }
+    .footerImg{
+      display: flex;
+      flex-direction: column;
+    }
+  }

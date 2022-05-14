@@ -93,7 +93,9 @@ const Header = ({ type }) => {
             <button className="headerBtn">Sign in / Register</button>
             <div className="headerSearch">
               <div className="headerSearchItem">
+                <div className="manage">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
+                </div>
                 <input
                   type="text"
                   placeholder="Where are you going?"
@@ -200,7 +202,7 @@ const Header = ({ type }) => {
                 )}
               </div>
               <div className="headerSearchItem">
-                <button className="headerBtn"
+                <button className="headerBtn2"
                   onClick={() => {handleSearch(); setOpenOptions(!openOptions); 
                     openDate ? setOpenDate(!openDate): setOpenDate(openDate) }}
                 >

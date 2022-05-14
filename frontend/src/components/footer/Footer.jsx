@@ -49,7 +49,7 @@ const Footer = () => {
     <h6 style={{ color: "#0071C2", fontSize: "14px", fontWeight: "700", cursor: "pointer", textAlign: "center" }}>Extranet login</h6>
             <div style={{ width: "73%", margin: "auto", textAlign: "center", fontSize: "12px" }}>Copyright © 1996–2021 Booking.com™. All rights reserved.</div>
             <div style={{ fontSize: "13px", padding: "15px", color: "#6B6B6B", textAlign: "center" }}>Booking.com is part of Booking Holdings Inc., the world leader in online travel and related services.</div>
-            <div style={{ padding: "19px", margin: "auto", width: "55%", textAlign: "center", display: "flex", justifyContent: "space-evenly" }}>
+            <div className="footerImg">
 
                 <img src="https://cf.bstatic.com/static/img/tfl/group_logos/logo_booking/27c8d1832de6a3123b6ee45b59ae2f81b0d9d0d0.png" alt="logo" />
                 <img src="https://cf.bstatic.com/static/img/tfl/group_logos/logo_priceline/f80e129541f2a952d470df2447373390f3dd4e44.png" alt="logo" />

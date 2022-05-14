@@ -39,6 +39,16 @@ export const createHotel = async (req, res, next) => {
     }
   };
 
+  export const getfeaturedHotel = async (req, res, next) => {
+    try {
+     const hotel = await Hotel.find(req.query);
+      res.status(200).json(hotel);
+    } catch (err) {
+      next(err);
+    }
+  };
+
+
 
   export const getHotels = async (req, res, next) => {
     const { min, max,rating, ...others } = req.query;

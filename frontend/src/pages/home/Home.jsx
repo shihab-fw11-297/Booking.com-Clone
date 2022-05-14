@@ -19,14 +19,13 @@ const Home = () => {
             <h1 className="homeTitle">Top destinations</h1>
             <Explore/>
             <h1 className="homeTitle">Browse by property type</h1>
-            <PropertyList/>
+             <PropertyList/>
             <Featured/>
             <h1 className="homeTitle">Homes guests love</h1>
             <FeaturedProperties/>
-            <h1 className="homeTitle" >Connect with other travelers</h1>
-            <Connect/>
-            <MailList/>         
-            <Footer/>
+             <Connect/>
+            <MailList/>          
+             <Footer/> 
             </div>
         </div>
     );

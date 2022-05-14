@@ -42,3 +42,17 @@
     line-height: 24px;
     color: #bdbdbd;
   }
+
+
+  @media screen and (max-width: 767px) {
+
+    .mailInputContainer>input{
+      width: 200px;
+      height: 30px;
+      padding: 10px;
+      border: none;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
+
+  }

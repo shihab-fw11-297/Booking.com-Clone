@@ -47,3 +47,53 @@
   .fpRating>span{
     font-size: 14px;
   }
+
+
+  @media screen and (max-width: 767px) {
+    
+    .fp{
+      width: 95%;
+      max-width: 767px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .fpItem{
+      flex: 1;
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+  }
+  
+    .fpImg{ 
+      border-radius: 10px;
+      width: 95%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+  }
+
+  @media (min-width: 768px) and (max-width: 1370px){
+    .fp{
+      width: 95%;
+      min-width: 767px;
+      max-width: 1100px;
+      gap: 2px;
+    }
+
+    .fpItem{
+      flex: 1;
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+  }
+  
+    .fpImg{ 
+      border-radius: 10px;
+      width: 95%;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
