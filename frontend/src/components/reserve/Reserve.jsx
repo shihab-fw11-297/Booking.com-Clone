@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data, loading, error } = useFetch(`http://localhost:8800/api/hotels/room/${hotelId}`);
+  const { data, loading} = useFetch(`http://localhost:8800/api/hotels/room/${hotelId}`);
   const { date } = useContext(SearchContext);
 
   const getDatesInRange = (startDate, endDate) => {
@@ -67,6 +67,9 @@ const Reserve = ({ setOpen, hotelId }) => {
   };
   return (
     <div className="reserve">
+       {loading ? (
+        "loading"
+      ) : (
       <div className="rContainer">
         <FontAwesomeIcon
           icon={faCircleXmark}
@@ -103,6 +106,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           Reserve Now!
         </button>
       </div>
+      )}
     </div>
   );
 };

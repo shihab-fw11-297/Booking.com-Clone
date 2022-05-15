@@ -1,20 +1,41 @@
-import React, { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./Login.module.css";
 import GoogleLogin from "react-google-login";
-// import { GoogleLogout } from "react-google-login";
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
+  const [credentials, setCredentials] = useState({
+    email: undefined,
+    password: undefined,
+  });
+  const { loading, error, dispatch } = useContext(AuthContext);
 
   const handleChange = (e) => {
     let str = e.target.value;
-    if (str.includes("@") && str.includes(".")) {
-      setShowPassword(true);
-    } else {
-      setShowPassword(false);
-    }
-  };
 
+    if (str.includes("@") && str.includes(".")) {
+        setShowPassword(true);
+    }
+    setCredentials((prev) => ({ ...prev, [e.target.id]: str }));
+};
+
+const handleClick = async (e) => {
+  e.preventDefault();
+  dispatch({ type: "LOGIN_START" });
+
+  try {
+      const res = await axios.post("http://localhost:8800/api/auth/register", credentials);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+       navigate("/")
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+    }
+
+}
 
   const responseGoogle = (res) => {
   
@@ -50,42 +71,40 @@ const Signup = () => {
       </div>
 
       <div className={styles.form}>
-        <h2 className={styles.formheading}>Sign in or create an account</h2>
-        <form action="">
-          <label htmlFor="email">Email address</label>
-          <input
-            onChange={handleChange}
-            className={styles.input}
-            type="email"
-            name="email"
-            id="email"
-            autoFocus
-          />
-          {showPassword ? (
-            <div>
-              <label htmlFor="password1">Password</label>
-              <input
-                className={styles.input}
-                type="password"
-                name="password1"
-                id="password1"
-              />
-              <label htmlFor="password2">Confirm Password</label>
-              <input
-                className={styles.input}
-                type="password"
-                name="password2"
-                id="password2"
-              />
+                <h2 className={styles.formheading}>Sign in or create an account</h2>
+                <form action="">
+                    <label htmlFor="email">Email address</label>
+                    <input
+                        onChange={handleChange}
+                        className={styles.input}
+                        type="email"
+                        name="email"
+                        id="email"
+                        autoFocus
+                    />
+                    {showPassword ? (
+                        <div>
+                            <label htmlFor="password1">Password</label>
+                            <input
+                                className={styles.input}
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="password"
+                                onChange={handleChange}
+                            />
+                        </div>
+                    ) : ""}
+                    <input
+                        className={styles.button}
+                        type="submit"
+                        defaultValue="Create account"
+                        disabled={loading} onClick={handleClick}
+                    />
+                     {error && <span>{error.message}</span>}
+                </form>
             </div>
-          ) : null}
-          <input
-            className={styles.button}
-            type="submit"
-            value="Create account"
-          />
-        </form>
-      </div>
+
 
       <div className={styles.line}>
         <hr className={styles.hr} />

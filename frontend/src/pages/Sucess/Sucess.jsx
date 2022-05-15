@@ -9,8 +9,19 @@ import MailList from "../../components/mailList/MailList";
 import Footer from "../../components/footer/Footer";
 import { Connect } from "../../components/Connect/Connect";
 import suc from './Sucess.jpg'
+import { useEffect } from "react";
 
 const Sucess = () => {
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 100,
+            behavior: "smooth",
+        });
+    };
+    useEffect(()=>{
+        scrollToTop();
+    },[])
+
     return (
         <div>
             <Navbar />

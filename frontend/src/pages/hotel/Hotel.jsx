@@ -63,6 +63,7 @@ const Hotel = () => {
       navigate("/login");
     }
   };
+  
 
   return (
     <div>
@@ -135,8 +136,11 @@ const Hotel = () => {
               <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
                   nights)
               </h2>
-              <button onClick={handleClick}>Reserve or Book Now!</button>
-            </div>
+              { user ? 
+              <button onClick={handleClick}>Reserve or Book Now!</button> :
+              <button>First Login Then Book Your Rooms!</button>
+              }
+              </div>
           </div>
         </div>
         <MailList />

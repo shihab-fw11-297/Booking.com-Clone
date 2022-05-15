@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch";
 
 const Featured = () => {
   const { data, loading} = useFetch(
-    "http://localhost:8800/api/hotels/countByCity?cities=Berlin,madrid,London"
+    "http://localhost:8800/api/hotels/countByCity?cities=Berlin,Canada,London"
   );
   return (
     <div className="featured">
@@ -30,7 +30,7 @@ const Featured = () => {
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1>Madrid</h1>
+              <h1>Canada</h1>
               <h2>{data[1]} properties</h2>
             </div>
           </div>

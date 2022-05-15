@@ -7,9 +7,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-
+import { useState } from "react";
 const Navbar = () => {
     const { user } = useContext(AuthContext);
+    const [open, setOpen] = useState(false);
+
+    const logOut = () => {
+        localStorage.removeItem('user')
+        window.location.reload();
+    }
+
     return (
         <div className="navbar">
             <div className="navContainer">
@@ -21,16 +28,27 @@ const Navbar = () => {
                         </svg>
                     </Link>
                 </span>
-                {user ? <b>Welcome {user.username}</b> : (
+                {user ? <div>
+                    <b classname="name" onClick={() => setOpen(!open)}>Welcome {user.email.substring(0, user.email.lastIndexOf("@"))}</b>
+                    {open &&
 
-                    <div className="navItems">
-                        <button className="firstButton">List Your Property</button>
-                        <button className="navButton"><Link to="/Signup">Register</Link></button>
-                        <button className="navButton"><Link to="/login">Login</Link></button>
-                        <button className="navButtons" ><FontAwesomeIcon icon={faCircleUser} className="headerIcons2" /></button>
-                        <button className="navButtons" ><Link to="/">  <FontAwesomeIcon icon={faBars} className="headerIcons2" /> </Link></button>
-                    </div>
-                )}
+                        <div classname="options">
+                            <div>
+                                Log out </div>
+                        </div>
+                    }
+                </div>
+                    : (
+
+
+                        <div className="navItems">
+                            <button className="firstButton">List Your Property</button>
+                            <button className="navButton"><Link to="/Signup">Register</Link></button>
+                            <button className="navButton"><Link to="/login">Login</Link></button>
+                            <button className="navButtons" ><FontAwesomeIcon icon={faCircleUser} className="headerIcons2" /></button>
+                            <button className="navButtons" ><Link to="/">  <FontAwesomeIcon icon={faBars} className="headerIcons2" /> </Link></button>
+                        </div>
+                    )}
             </div>
         </div>
     )

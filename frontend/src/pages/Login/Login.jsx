@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import styles from "./Login.module.css";
 import GoogleLogin from "react-google-login";
-import { GoogleLogout } from "react-google-login";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
@@ -189,20 +188,3 @@ const Login = () => {
 
 export default Login;
 
-export const Logout = () => {
-    const logoutres = () => {
-        console.log("logout");
-    };
-
-    return <div>
-        <GoogleLogout
-            className={styles.logout}
-            clientId="226966314469-tqionojppbn060982fbumool9qd98qsd.apps.googleusercontent.com"
-            buttonText=""
-            onLogoutSuccess={logoutres}
-        >
-            <p style={{ marginBottom: "8px", marginRight: "10px" }} className={styles.logoutText}>logout</p>
-        </GoogleLogout>
-    </div>
-
-}

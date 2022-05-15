@@ -5,7 +5,7 @@ import styled from "styled-components"
 const data = [
   {
     src: "https://t-cf.bstatic.com/xdata/images/region/square250/49646.webp?k=b7f38878b9164ee38e0b99c4d4646dbea76b7bf4add8464b1aa75e4c9d0efc6e&o=",
-    location: "Madrid",
+    location: "Berlin",
     properties: "5,247 properties",
   },
   {
@@ -15,19 +15,20 @@ const data = [
   },
   {
     src: "https://t-cf.bstatic.com/xdata/images/region/square250/60943.webp?k=764589bec5bc72ca0abf6d79f8e86bc0a992d9a9a13a67c1c5d0a196de947077&o=",
-    location: "Grand Canyon",
+    location: "Canada",
+    properties: "3,906 properties",
+  },
+  {
+    src: "https://t-cf.bstatic.com/xdata/images/region/square250/68085.webp?k=0f810fd728bfd94157ce21f611e004eb6fa47a2722067e8086cd5e5f6bba24b9&o=",
+    location: "India",
     properties: "3,906 properties",
   },
   {
     src: "https://t-cf.bstatic.com/xdata/images/region/square250/67964.webp?k=8f4f2ee5df4d880fe7f202927984f81655afbda90b7682a8f0582a0fcaa5e284&o=",
-    location: "Berlin",
+    location: "Madrid",
     properties: "2,906 properties",
   },
-  {
-    src: "https://t-cf.bstatic.com/xdata/images/region/square250/68085.webp?k=0f810fd728bfd94157ce21f611e004eb6fa47a2722067e8086cd5e5f6bba24b9&o=",
-    location: "Canada",
-    properties: "3,906 properties",
-  }
+  
 ]
 
 const Div  = styled.div`

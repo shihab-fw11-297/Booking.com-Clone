@@ -35,7 +35,7 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input placeholder={destination} type="text" onChange={(e) => setDestination(e.target.value)}/>
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -72,7 +72,7 @@ const List = () => {
                   Star rating
                   </span>
                   <select className="selectboxs" onChange={(e) => setRating(e.target.value)}>
-                    <option selected>Select Star</option>
+                    <option defaultValue>Select Star</option>
                     <option value="1">1 star</option>
                     <option value="2">2 star</option>
                     <option value="3">3 star</option>

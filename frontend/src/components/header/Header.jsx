@@ -97,6 +97,7 @@ const Header = ({ type }) => {
                 <div className="manage">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 </div>
+
                 <input
                   type="text"
                   placeholder="Where are you going?"
