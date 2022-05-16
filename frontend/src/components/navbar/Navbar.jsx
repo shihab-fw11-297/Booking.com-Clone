@@ -1,4 +1,4 @@
-import "./navbar.css"
+import styles from "./navbar.module.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,9 +18,9 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar">
-            <div className="navContainer">
-                <span className="logo">
+        <div className={styles.navbar} >
+            <div className={styles.navContainer}>
+                <span className={styles.logo}>
                     <Link to="/">
                         <svg height="24" width="144" viewBox="0 0 252 42" role="presentation" aria-hidden="true" focusable="false">
                             <path d="M15.592 22.92C15.591 20.283 13.924 18.652 11.348 18.652H7.738C6.58 18.815 6.055 19.518 6.055 20.877V26.783L11.348 26.79C13.966 26.79 15.591 25.629 15.592 22.92ZM6.055 13.391H10.819C13.496 13.391 14.449 11.689 14.449 9.911C14.449 7.576 13.057 6.181 10.735 6.181H8.025C6.671 6.268 6.055 6.966 6.055 8.428V13.391ZM21.815 23.351C21.815 28.956 17.536 32.87 10.912 32.87H0V4.87C0.02 3.085 1.872 1.285 3.64 1.218H10.777C16.737 1.218 20.587 4.222 20.587 9.202C20.587 12.462 18.959 14.346 17.988 15.183L17.152 15.9L18.109 16.441C20.432 17.751 21.815 20.333 21.815 23.351V23.351ZM148.135 20.675C148.135 15.58 145.385 14.986 143.325 14.986C139.165 14.986 138.845 19.175 138.845 20.459C138.845 23.376 140.105 26.49 143.665 26.49C145.705 26.49 148.135 25.48 148.135 20.675V20.675ZM154.045 9.738L154.025 30.732C154.025 38.739 148.045 41.584 142.505 41.584C139.815 41.584 136.845 40.858 134.555 39.639L134.105 39.4L134.835 37.53L135.345 36.243C135.905 34.855 136.715 34.509 138.095 34.928C139.155 35.312 140.735 35.739 142.475 35.739C146.045 35.739 148.015 34.05 148.015 30.994V30.356L147.505 30.732C146.215 31.72 144.575 32.205 142.505 32.205C136.445 32.205 132.215 27.445 132.215 20.63C132.215 13.811 136.305 9.228 142.385 9.228C145.445 9.228 147.325 10.309 148.375 11.221L148.675 11.482L148.855 11.132C149.325 10.23 150.275 9.738 151.515 9.738H154.045V9.738ZM67.707 21.184C67.707 17.473 65.411 14.877 62.137 14.877C58.877 14.877 56.608 17.473 56.608 21.184C56.608 24.898 58.878 27.496 62.138 27.496C65.464 27.496 67.708 24.958 67.708 21.184H67.707ZM74.088 21.184C74.088 28.054 69.052 33.04 62.138 33.04C55.234 33.04 50.228 28.054 50.228 21.184C50.228 14.318 55.234 9.331 62.138 9.331C69.052 9.331 74.088 14.318 74.088 21.184ZM105.445 32.677V13.281C105.445 10.941 104.335 9.806 102.025 9.806L99.465 9.796L99.485 27.5H99.465L99.485 32.87H105.445V32.677ZM122.505 9.278C119.175 9.278 117.055 10.765 115.865 12.018L115.465 12.423L115.325 11.873C114.975 10.529 113.795 9.788 112.025 9.788H109.165L109.185 32.683H115.225V22.131C115.225 21.099 115.365 20.205 115.635 19.387C116.355 16.914 117.995 15.378 120.525 15.378C122.555 15.378 123.725 16.453 123.725 19.232V29.203C123.725 31.573 125.195 32.683 127.555 32.683H129.785V18.261C129.785 12.475 127.825 9.278 122.505 9.278V9.278ZM91.436 21.777C91.1964 21.3119 90.8928 20.8827 90.534 20.502L90.326 20.281L90.546 20.069C90.862 19.734 91.186 19.338 91.497 18.878L97.584 9.795H90.195L85.622 16.899C85.363 17.28 84.84 17.472 84.058 17.472H82.48V4.045C82.48 1.36 80.642 0 78.84 0H76.414L76.42 32.691H82.48V23.183H83.63C84.375 23.183 84.883 23.269 85.118 23.675L88.729 30.518C89.736 32.375 90.743 32.691 92.635 32.691H97.651L93.915 26.488L91.436 21.777ZM41.648 21.184C41.648 17.473 39.358 14.877 36.079 14.877C32.819 14.877 30.553 17.473 30.553 21.184C30.553 24.898 32.819 27.496 36.079 27.496C39.405 27.496 41.649 24.958 41.649 21.184H41.648ZM48.028 21.184C48.028 28.054 43.002 33.04 36.079 33.04C29.182 33.04 24.177 28.054 24.177 21.184C24.177 14.318 29.182 9.331 36.079 9.331C43.002 9.331 48.027 14.318 48.027 21.184H48.028ZM98.764 3.81C98.764 1.704 100.464 0 102.544 0C104.634 0 106.334 1.704 106.334 3.81C106.334 5.911 104.634 7.617 102.544 7.617C100.464 7.617 98.764 5.911 98.764 3.81Z" fill="white"></path>
@@ -28,25 +28,26 @@ const Navbar = () => {
                         </svg>
                     </Link>
                 </span>
-                {user ? <div>
-                    <b classname="name" onClick={() => setOpen(!open)}>Welcome {user.email.substring(0, user.email.lastIndexOf("@"))}</b>
+                {user ? <div classname={styles.names} >
+                    <b onClick={() => setOpen(!open)}>Welcome {user.email.substring(0, user.email.lastIndexOf("@"))}</b>
                     {open &&
 
-                        <div classname="options">
-                            <div>
-                                Log out </div>
-                        </div>
+                       
+                            <div classname={styles.logOut} onClick={logOut}>
+                                Log out 
+                            </div>
+                       
                     }
                 </div>
                     : (
 
 
-                        <div className="navItems">
-                            <button className="firstButton">List Your Property</button>
-                            <button className="navButton"><Link to="/Signup">Register</Link></button>
-                            <button className="navButton"><Link to="/login">Login</Link></button>
-                            <button className="navButtons" ><FontAwesomeIcon icon={faCircleUser} className="headerIcons2" /></button>
-                            <button className="navButtons" ><Link to="/">  <FontAwesomeIcon icon={faBars} className="headerIcons2" /> </Link></button>
+                        <div className={styles.navItems}>
+                            <button className={styles.firstButton}>List Your Property</button>
+                            <button className={styles.navButton}><Link to="/Signup">Register</Link></button>
+                            <button className={styles.navButton}><Link to="/login">Login</Link></button>
+                            <button className={styles.navButtons} ><FontAwesomeIcon icon={faCircleUser} className={styles.headerIcons2} /></button>
+                            <button className={styles.navButtons} ><Link to="/">  <FontAwesomeIcon icon={faBars} className={styles.headerIcons2} /> </Link></button>
                         </div>
                     )}
             </div>

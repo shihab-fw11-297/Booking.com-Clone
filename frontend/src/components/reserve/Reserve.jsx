@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
-  const { data, loading} = useFetch(`http://localhost:8800/api/hotels/room/${hotelId}`);
+  const { data, loading} = useFetch(`https://booking-clones.herokuapp.com/api/hotels/room/${hotelId}`);
   const { date } = useContext(SearchContext);
 
   const getDatesInRange = (startDate, endDate) => {
@@ -55,7 +55,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
-          const res = axios.put(`http://localhost:8800/api/rooms/availability/${roomId}`, {
+          const res = axios.put(`https://booking-clones.herokuapp.com/api/rooms/availability/${roomId}`, {
             dates: alldates,
           });
           return res.data;

@@ -19,11 +19,16 @@ const List = () => {
   const [max, setMax] = useState(undefined);
   const [rating, setRating] = useState(0);
 
-  const { data, loading,reFetch  } = useFetch(`http://localhost:8800/api/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}&rating=${rating || 5}`);
+  const { data, loading,reFetch  } = useFetch(`https://booking-clones.herokuapp.com/api/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}&rating=${rating || 5}`);
 
   const handleClick = () => {
     reFetch();
   };
+
+   function capitalizeFirstLetter(str) {
+    let data = str[0].toUpperCase() + str.slice(1);
+    setDestination(data);
+  }
 
   return (
     <div>
@@ -35,7 +40,7 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" onChange={(e) => setDestination(e.target.value)}/>
+              <input placeholder={destination} type="text"  onChange={(e) => capitalizeFirstLetter(e.target.value)}/>
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>

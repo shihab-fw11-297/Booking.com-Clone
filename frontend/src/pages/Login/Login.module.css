@@ -8,6 +8,7 @@
     padding-right: 80px;
     background-color: #003580;
     display: flex;
+    max-width: auto;
     justify-content: space-between;
     margin-bottom: 40px;
 }
@@ -23,14 +24,14 @@
     margin: auto;
 }
 .input{
-    width:100%;
+    width:90%;
     margin-top: 2px;
     height: 31px;
     border: 0.5px solid black;
     margin-bottom: 15px;
 }
 .button{
-    width:406px;
+    width:90%;
     text-align: center;
     color: white;
     height: 42px;
@@ -74,6 +75,11 @@
     margin: auto;
     display: flex;
 }
+.line2{
+   margin: auto auto auto -50px;
+
+}
+
 .hr{
     margin-top: 29px;
     width: 75px;

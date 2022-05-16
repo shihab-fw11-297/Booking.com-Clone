@@ -30,28 +30,31 @@ const Login = () => {
 
     
     const responseGoogle = (res) => {
-        res.preventDefault();
-        dispatch({ type: "LOGIN_START" });
+      
         try {
-            dispatch({ type: 'AUTH', payload:  res.data });
-            dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+            // dispatch({ type: "LOGIN_START" });
+            // dispatch({ type: 'AUTH', payload:  res.data });
+            // dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+            console.log(res.data);
             navigate("/")
-        } catch (err) {
-            dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+        } catch (error) {
+            console.log(error);
+           // dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
         }
 
     };
+    const googleError = (err) => dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
 
     const handleClick = async (e) => {
         e.preventDefault();
         dispatch({ type: "LOGIN_START" });
 
         try {
-            const res = await axios.post("http://localhost:8800/api/auth/login", credentials);
+            const res = await axios.post("https://booking-clones.herokuapp.com/api/auth/login", credentials);
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
              navigate("/")
           } catch (err) {
-            dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+            dispatch({ type: "LOGIN_FAILURE", payload: err });
           }
 
     }
@@ -124,7 +127,7 @@ const Login = () => {
                      {error && <span>{error.message}</span>}
                 </form>
             </div>
-
+            <div className={styles.line2}><Link to="/Signup"><b>Click here for new registration!</b></Link></div>
             <div className={styles.line}>
                 <hr className={styles.hr} />
                 <p className={styles.p}>or use one of these options</p>
@@ -139,7 +142,7 @@ const Login = () => {
                     />
                 </button>
                 <GoogleLogin
-                    clientId="226966314469-tqionojppbn060982fbumool9qd98qsd.apps.googleusercontent.com"
+                    clientId="678293954965-1hun7sedq33jmlk3lmv7o2mv23s3v0r8.apps.googleusercontent.com"
                     render={(renderProps) => (
                         <button
                             className={styles.google}
@@ -155,7 +158,7 @@ const Login = () => {
                     )}
                     buttonText="Login"
                     onSuccess={responseGoogle}
-                    onFailure={responseGoogle}
+                    onFailure={googleError}
                     isSignedIn={true}
                     cookiePolicy={"single_host_origin"}
                 />

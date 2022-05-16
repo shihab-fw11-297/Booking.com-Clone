@@ -20,7 +20,7 @@ import Reserve from "../../components/reserve/Reserve";
 const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const { data, loading } = useFetch(`http://localhost:8800/api/hotels/find/${id}`);
+  const { data, loading } = useFetch(`https://booking-clones.herokuapp.com/api/hotels/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -138,7 +138,7 @@ const Hotel = () => {
               </h2>
               { user ? 
               <button onClick={handleClick}>Reserve or Book Now!</button> :
-              <button>First Login Then Book Your Rooms!</button>
+              <button onClick={handleClick}>First Login Then Book Your Rooms!</button>
               }
               </div>
           </div>

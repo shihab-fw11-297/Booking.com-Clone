@@ -4,6 +4,7 @@ import GoogleLogin from "react-google-login";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -28,7 +29,7 @@ const handleClick = async (e) => {
   dispatch({ type: "LOGIN_START" });
 
   try {
-      const res = await axios.post("http://localhost:8800/api/auth/register", credentials);
+      const res = await axios.post("https://booking-clones.herokuapp.com/api/auth/register", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
        navigate("/")
     } catch (err) {
@@ -37,9 +38,18 @@ const handleClick = async (e) => {
 
 }
 
-  const responseGoogle = (res) => {
-  
-  };
+const googleSuccess = (res) => {
+  try {
+      dispatch({ type: 'AUTH', payload:  res.data });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      navigate("/")
+  } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+  }
+
+};
+
+const googleError = (err) => dispatch({ type: "LOGIN_FAILURE", payload: err });
 
   return (
     <div className={styles.login}>
@@ -105,7 +115,7 @@ const handleClick = async (e) => {
                 </form>
             </div>
 
-
+            <div className={styles.line2}><Link to="/login"><b>Click here for Login!</b></Link></div>
       <div className={styles.line}>
         <hr className={styles.hr} />
         <p className={styles.p}>or use one of these options</p>
@@ -120,7 +130,7 @@ const handleClick = async (e) => {
           />
         </button>
         <GoogleLogin
-          clientId=""
+          clientId="678293954965-1hun7sedq33jmlk3lmv7o2mv23s3v0r8.apps.googleusercontent.com"
           render={(renderProps) => (
             <button
               className={styles.google}
@@ -135,10 +145,9 @@ const handleClick = async (e) => {
             </button>
           )}
           buttonText="Login"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          isSignedIn={true}
-          cookiePolicy={"single_host_origin"}
+          onSuccess={googleSuccess}
+          onFailure={googleError}
+          cookiePolicy="single_host_origin"
         />
         <button className={styles.google}>
           <img
@@ -147,6 +156,7 @@ const handleClick = async (e) => {
           />
         </button>
       </div>
+     
       <div className={styles.line1}>
         <hr />
         <p className={styles.p1}>

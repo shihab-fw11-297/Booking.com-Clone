@@ -36,7 +36,7 @@ button{
 
 const PropertyList = () => {
   const { data, loading } = useFetch(
-    "http://localhost:8800/api/hotels/countByType"
+    "https://booking-clones.herokuapp.com/api/hotels/countByType"
   );
 
   const images = [
@@ -65,7 +65,8 @@ const PropertyList = () => {
             <Carousel breakPoints={breakPoints}>
               {data &&
                 images.map((img, i) => (
-                  <div className="pListItem" key={i}>
+                  
+                  <div className="pListItem" key={Math.random() * 50000}>
                     <img
                       src={img}
                       alt=""

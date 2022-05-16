@@ -47,6 +47,11 @@ const Header = ({ type }) => {
     });
   };
 
+  function capitalizeFirstLetter(str) {
+    let data = str[0].toUpperCase() + str.slice(1);
+    setDestination(data);
+  }
+
   const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
@@ -102,7 +107,8 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
-                  onChange={(e) => setDestination(e.target.value)}
+                  onChange={(e) => capitalizeFirstLetter(e.target.value)}
+                  
                 />
               </div>
               <div className="headerSearchItem">

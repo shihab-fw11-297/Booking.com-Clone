@@ -46,14 +46,20 @@
   display: none;
 }
 
-
-.name:hover{
+.names{
+  font-weight: 600;
+}
+.names:hover{
   cursor: pointer;
 }
 
-.options{
+.logOuts{
   margin-top: 2px;
- z-index: 1;
+  z-index: 1;
+}
+
+.logOuts:hover{
+  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
@@ -105,4 +111,18 @@
   .firstButton{
     display: none;
   }
+
+  
+.names:hover{
+  cursor: pointer;
+}
+
+.logOuts{
+  margin-top: 2px;
+  z-index: 1;
+}
+
+.logOuts:hover{
+  cursor: pointer;
+}
 }
